@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>verbes. — Franse werkwoorden oefenen</title>
+<meta name="description" content="Oefen Franse werkwoorden: kies je werkwoorden en tijden en vervoeg.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇫🇷</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#181B22; --muted:#626976; --faint:#A3A8B2; --line:#E2E5EA;
+  --accent:#2B44C4; --accent-soft:#E9ECFA; --ok:#1E8455; --ok-soft:#E5F3EC; --bad:#C23A2B; --bad-soft:#FBEAE7; --warn:#9A6200; --warn-soft:#FBF1DC;
+  --c-pres:#2B44C4; --c-pc:#1E7F5C; --c-imp:#A15C00; --c-pqp:#7B4A2E; --c-fut:#6A3FC4; --c-cond:#B0307A; --c-subj:#0C7A8A; --c-impe:#C23A2B;
+  --sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#14161B; --surface:#1B1E25; --ink:#ECEEF2; --muted:#9AA0AB; --faint:#5E6470; --line:#2B2F38;
+    --accent:#8C9DFF; --accent-soft:#252B47; --ok:#52C48A; --ok-soft:#1C3328; --bad:#FF7B6B; --bad-soft:#3A2220; --warn:#F2B84B; --warn-soft:#3A2F1A;
+    --c-pres:#8C9DFF; --c-pc:#4FC795; --c-imp:#F0A94A; --c-pqp:#D9A07E; --c-fut:#B79BFF; --c-cond:#F27DBF; --c-subj:#4FCADB; --c-impe:#FF7B6B;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14161B; --surface:#1B1E25; --ink:#ECEEF2; --muted:#9AA0AB; --faint:#5E6470; --line:#2B2F38;
+  --accent:#8C9DFF; --accent-soft:#252B47; --ok:#52C48A; --ok-soft:#1C3328; --bad:#FF7B6B; --bad-soft:#3A2220; --warn:#F2B84B; --warn-soft:#3A2F1A;
+  --c-pres:#8C9DFF; --c-pc:#4FC795; --c-imp:#F0A94A; --c-pqp:#D9A07E; --c-fut:#B79BFF; --c-cond:#F27DBF; --c-subj:#4FCADB; --c-impe:#FF7B6B;
+}
+.t-pres{--tc:var(--c-pres)} .t-pc{--tc:var(--c-pc)} .t-imp{--tc:var(--c-imp)} .t-pqp{--tc:var(--c-pqp)}
+.t-fut{--tc:var(--c-fut)} .t-cond{--tc:var(--c-cond)} .t-subj{--tc:var(--c-subj)} .t-impe{--tc:var(--c-impe)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+header{display:flex;align-items:center;justify-content:space-between;padding:22px 0 8px;gap:12px}
+.mark{font:400 28px/1 var(--serif);letter-spacing:-.01em;background:none;border:0;padding:0}
+.mark i{color:var(--accent);font-style:normal}
+nav{display:flex;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px}
+nav button{border:0;background:none;padding:6px 14px;border-radius:999px;color:var(--muted);font-weight:500;font-size:14px}
+nav button[aria-current="true"]{background:var(--ink);color:var(--bg)}
+
+.view{display:none;padding:24px 0 120px}
+.view.on{display:block}
+h2{font:600 15px/1.3 var(--sans);margin:0 0 4px}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.block{margin-bottom:32px}
+
+/* ---------- setup ---------- */
+.setup{display:grid;grid-template-columns:310px 1fr;gap:44px;align-items:start}
+@media (max-width:860px){.setup{grid-template-columns:1fr;gap:20px}}
+.tenses{display:flex;flex-direction:column;gap:2px}
+.tense{display:flex;align-items:center;gap:12px;padding:9px 10px;border-radius:10px;border:0;background:none;text-align:left;width:100%}
+.tense:hover{background:var(--surface)}
+.box{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--faint);flex:none;display:grid;place-items:center;transition:background .12s,border-color .12s}
+[aria-pressed="true"]>.box,[aria-checked="true"]>.box{background:var(--tc,var(--accent));border-color:var(--tc,var(--accent))}
+[aria-pressed="true"]>.box::after,[aria-checked="true"]>.box::after{content:"";width:8px;height:4px;border:2px solid var(--surface);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.tense b{font-weight:500;color:var(--tc)}
+.tense small{display:block;color:var(--muted);font-size:12.5px}
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:3px}
+.seg button{flex:1;border:0;background:none;padding:7px 0;border-radius:7px;color:var(--muted);font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent)}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px;border:0;background:none;width:100%;text-align:left;border-radius:10px}
+.switch:hover{background:var(--surface)}
+.switch small{display:block;color:var(--muted);font-size:12.5px}
+.switch .tr{width:34px;height:20px;border-radius:99px;background:var(--line);position:relative;flex:none;transition:background .15s}
+.switch .tr::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+.switch[aria-pressed="true"] .tr{background:var(--accent)}
+.switch[aria-pressed="true"] .tr::after{transform:translateX(14px)}
+
+.paste{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:22px}
+.paste label{font-weight:500;font-size:14px;display:block;margin-bottom:2px}
+.paste p{margin:0 0 10px;color:var(--muted);font-size:13px}
+.paste textarea{width:100%;min-height:64px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:10px 12px;outline:none;font-size:15px;line-height:1.45}
+.paste textarea:focus{border-color:var(--accent)}
+.prow{display:flex;align-items:center;gap:14px;margin-top:10px;flex-wrap:wrap}
+.chk{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--muted);cursor:pointer;user-select:none}
+.chk input{accent-color:var(--accent);width:16px;height:16px;margin:0}
+.prow .primary{margin-left:auto;padding:9px 16px;font-size:14px}
+.pmsg{margin-top:10px;font-size:13.5px;border-radius:9px;padding:8px 11px;display:none}
+.pmsg.show{display:block}
+.pmsg.ok{background:var(--ok-soft);color:var(--ok)}
+.pmsg.warn{background:var(--warn-soft);color:var(--warn)}
+
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.search{flex:1;min-width:200px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;outline:none}
+.search:focus{border-color:var(--accent)}
+.ghost{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 12px;font-size:14px;color:var(--muted)}
+.ghost:hover:not(:disabled){color:var(--ink);border-color:var(--faint)}
+.filters{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
+.filters button{border:0;background:none;border-radius:8px;padding:5px 10px;font-size:13.5px;color:var(--muted)}
+.filters button span{color:var(--faint);margin-left:4px;font-variant-numeric:tabular-nums}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.filters button[aria-pressed="true"] span{color:inherit;opacity:.6}
+
+.list{background:var(--surface);border:1px solid var(--line);border-radius:14px;max-height:min(560px,62vh);overflow:auto;overscroll-behavior:contain}
+.lhead{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+.lhead button{border:0;background:none;display:flex;align-items:center;gap:12px;padding:0;color:var(--ink);font-weight:500}
+.row{display:grid;grid-template-columns:18px minmax(110px,180px) 1fr auto;align-items:center;gap:14px;width:100%;padding:9px 14px;border:0;border-bottom:1px solid var(--line);background:none;text-align:left}
+.row:last-child{border-bottom:0}
+.row:hover{background:var(--bg)}
+.row .inf{font:400 18px/1.2 var(--serif)}
+.row .nl{color:var(--muted);font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .tags{display:flex;gap:6px}
+.tag{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 7px;white-space:nowrap}
+.tag.et{color:var(--c-pc);border-color:color-mix(in srgb,var(--c-pc) 35%,transparent)}
+@media (max-width:520px){.row{grid-template-columns:18px 1fr auto}.row .nl{grid-column:2;grid-row:2;margin-top:-8px}.row .tags{grid-row:1/3;grid-column:3}}
+.empty{color:var(--muted);padding:22px 14px}
+
+.bar{position:fixed;left:0;right:0;bottom:0;padding:14px 20px calc(14px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);z-index:5}
+.bar .wrap{display:flex;align-items:center;gap:16px;padding:0}
+.bar p{margin:0;color:var(--muted);font-size:14px;flex:1}
+.bar p b{color:var(--ink);font-weight:500}
+.primary{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:12px 22px;font-weight:500;font-size:15px}
+:root[data-theme="dark"] .primary{color:#11131a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .primary{color:#11131a}}
+.primary:disabled{opacity:.35}
+
+/* ---------- oefening ---------- */
+.ex{max-width:640px;margin:0 auto}
+.extop{display:flex;align-items:center;gap:14px;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.extop .ok{color:var(--ok)} .extop .bad{color:var(--bad)}
+.extop .stop{margin-left:auto;border:0;background:none;color:var(--muted);padding:4px}
+.extop .stop:hover{color:var(--ink)}
+.prog{height:3px;background:var(--line);border-radius:3px;margin:12px 0 32px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s ease}
+
+.tband{border-radius:14px;padding:14px 18px;background:color-mix(in srgb,var(--tc) 11%,var(--surface));border:1px solid color-mix(in srgb,var(--tc) 30%,transparent);display:flex;gap:14px;align-items:center}
+.tband .dot{width:10px;align-self:stretch;border-radius:4px;background:var(--tc);flex:none}
+.tband .tn{font:600 22px/1.15 var(--sans);color:var(--tc);letter-spacing:-.01em}
+.tband .tnl{color:var(--muted);font-size:14px}
+.tband .how{margin-top:6px;font-size:14px;color:var(--ink)}
+
+.qmain{margin-top:30px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.qverb{font:400 clamp(44px,9vw,66px)/1.02 var(--serif);letter-spacing:-.015em;overflow-wrap:anywhere}
+.qnl{color:var(--muted);font:italic 400 19px/1.3 var(--serif);margin-top:4px}
+.who{text-align:right}
+.who .pw{font:500 30px/1.1 var(--serif)}
+.who .pl{color:var(--muted);font-size:14px;border:1px solid var(--line);border-radius:8px;padding:4px 10px;background:var(--surface);display:inline-block;margin-top:4px}
+.notes{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.note{font-size:13px;border-radius:8px;padding:4px 10px;background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+.note b{color:var(--ink);font-weight:500}
+
+.line{display:flex;align-items:baseline;gap:12px;margin-top:30px;border-bottom:2px solid var(--line);padding-bottom:6px;transition:border-color .15s}
+.line:focus-within{border-color:var(--tc,var(--accent))}
+.line.ok{border-color:var(--ok)} .line.bad{border-color:var(--bad)}
+.pron{font:400 28px/1.2 var(--serif);color:var(--muted);white-space:nowrap}
+.ans{flex:1;min-width:0;border:0;background:none;outline:none;font:400 28px/1.2 var(--serif);padding:4px 0}
+.ans::placeholder{color:var(--faint);font-size:.75em}
+.ans:disabled{color:var(--ink);-webkit-text-fill-color:var(--ink);opacity:1}
+.hintline{min-height:22px;margin-top:8px;color:var(--muted);font-size:14px}
+.hintline code{font:500 16px/1 var(--serif);letter-spacing:.08em;color:var(--ink)}
+.accents{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.accents button{width:38px;height:38px;border:1px solid var(--line);background:var(--surface);border-radius:9px;font:400 18px/1 var(--serif)}
+.accents button:hover{border-color:var(--faint)}
+.acts{display:flex;gap:10px;margin-top:26px;align-items:center}
+.acts .ghost{padding:11px 16px}
+.acts .primary{margin-left:auto}
+.fb{margin-top:24px;border-radius:12px;padding:14px 16px;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-soft);color:var(--ok)}
+.fb.bad{background:var(--bad-soft);color:var(--bad)}
+.fb.warn{background:var(--warn-soft);color:var(--warn)}
+.fb .big{font:400 24px/1.3 var(--serif);color:var(--ink)}
+.fb .yours{font-size:14px;color:var(--muted);margin-top:4px}
+.fb .yours s{text-decoration-thickness:1px}
+.fb .row2{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.say{border:0;background:none;padding:6px;color:inherit;display:inline-grid;place-items:center;border-radius:8px}
+.say:hover{background:color-mix(in srgb,currentColor 12%,transparent)}
+.say svg{width:20px;height:20px}
+.mini{margin-top:12px;display:none}
+.mini.show{display:block}
+.mini table{width:100%;border-collapse:collapse;font-size:15px}
+.mini td{padding:6px 0;border-bottom:1px solid var(--line)}
+.mini td:first-child{color:var(--muted);width:120px}
+.mini tr.cur td{color:var(--tc);font-weight:500}
+.kbd{color:var(--faint);font-size:13px;margin-top:22px;text-align:center}
+.kbd kbd{font:inherit;border:1px solid var(--line);border-radius:5px;padding:0 5px;color:var(--muted)}
+
+/* ---------- resultaat ---------- */
+.res{max-width:640px;margin:0 auto}
+.score{font:400 clamp(72px,16vw,120px)/1 var(--serif);letter-spacing:-.03em;margin:10px 0 6px}
+.score small{font-size:.4em;color:var(--muted)}
+.sum{color:var(--muted);margin:0 0 28px}
+.resacts{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+.per{display:flex;flex-direction:column;gap:10px;margin-bottom:40px}
+.per div{display:grid;grid-template-columns:170px 1fr 60px;align-items:center;gap:12px;font-size:14px}
+.per .pb{height:8px;border-radius:5px;background:var(--line);overflow:hidden}
+.per .pb i{display:block;height:100%;background:var(--tc)}
+.per .pn{color:var(--tc);font-weight:500}
+.per .pv{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:520px){.per div{grid-template-columns:120px 1fr 48px}}
+.mist{list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+.mist li{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.mist .m1{font:400 19px/1.2 var(--serif)}
+.mist .m2{font-size:13.5px;grid-column:1;color:var(--tc)}
+.mist .m3{grid-column:2;grid-row:1/3;text-align:right;align-self:center}
+.mist s{color:var(--bad);text-decoration-thickness:1px}
+.mist .good{color:var(--ok);font-family:var(--serif);font-size:18px}
+
+/* ---------- tabellen ---------- */
+.tblhead{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tblhead .search{max-width:340px}
+.tblhead select{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 12px;min-width:200px}
+.tblverb{font:400 clamp(40px,7vw,56px)/1.1 var(--serif);margin:26px 0 2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:30px 32px;margin-top:28px}
+.grid h4{margin:0 0 8px;font:600 15px/1.3 var(--sans);color:var(--tc)}
+.grid h4 small{display:block;font-weight:400;font-size:12.5px;color:var(--muted)}
+.grid ol{list-style:none;margin:0;padding:0;border-top:2px solid var(--tc)}
+.grid li{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--line);font-size:15px;cursor:pointer}
+.grid li:hover{color:var(--tc)}
+.grid li span{color:var(--muted);min-width:80px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (max-width:520px){
+  .pron,.ans{font-size:23px}
+  .who{text-align:left}
+  .accents button{width:34px;height:34px}
+  .bar .wrap{gap:10px}
+  .acts .ghost{padding:10px 12px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <button class="mark" data-go="setup" aria-label="Naar start">verbes<i>.</i></button>
+    <nav>
+      <button data-go="setup" aria-current="true">Oefenen</button>
+      <button data-go="table">Vervoegingen</button>
+    </nav>
+  </header>
+
+  <!-- SETUP -->
+  <section class="view on" id="v-setup">
+    <div class="setup">
+      <div>
+        <div class="block">
+          <h2>Tijden</h2>
+          <p class="sub">Elke tijd heeft een eigen kleur, ook tijdens het oefenen.</p>
+          <div class="tenses" id="tenses"></div>
+        </div>
+        <div class="block">
+          <h2>Aantal vragen</h2>
+          <p class="sub">∞ gaat door tot je stopt.</p>
+          <div class="seg" id="count"></div>
+        </div>
+        <div class="block">
+          <h2>Opties</h2>
+          <button class="switch" id="o-acc" aria-pressed="false"><span>Accenten negeren<small>parle en parlé tellen allebei</small></span><span class="tr"></span></button>
+          <button class="switch" id="o-say" aria-pressed="false"><span>Antwoord uitspreken<small>na elke vraag</small></span><span class="tr"></span></button>
+          <button class="switch" id="o-how" aria-pressed="true"><span>Uitleg per tijd tonen<small>hoe je de tijd vormt</small></span><span class="tr"></span></button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Werkwoorden</h2>
+        <p class="sub">Vink ze aan in de lijst, of plak een hele lijst in één keer.</p>
+
+        <div class="paste">
+          <label for="paste">Lijst plakken</label>
+          <p>Scheid met komma's, puntkomma's of nieuwe regels. Accenten en hoofdletters maken niet uit.</p>
+          <textarea id="paste" placeholder="etre, avoir, aller, faire, se laver, s'appeler, preferer" spellcheck="false" autocapitalize="off"></textarea>
+          <div class="prow">
+            <label class="chk"><input type="checkbox" id="p-replace" checked> Huidige selectie eerst wissen</label>
+            <button class="primary" id="p-go">Aanvinken</button>
+          </div>
+          <div class="pmsg" id="pmsg" role="status"></div>
+        </div>
+
+        <div class="tools">
+          <input class="search" id="search" type="search" placeholder="Zoek in het Frans of Nederlands" autocomplete="off" spellcheck="false">
+          <button class="ghost" id="top10">Top 10</button>
+          <button class="ghost" id="none">Alles uitvinken</button>
+        </div>
+        <div class="filters" id="filters"></div>
+        <div class="list" id="list"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OEFENING -->
+  <section class="view" id="v-ex">
+    <div class="ex" id="exbox">
+      <div class="extop">
+        <span class="ok" id="c-ok">✓ 0</span>
+        <span class="bad" id="c-bad">✗ 0</span>
+        <span id="c-pos">1 / 10</span>
+        <span id="c-time">0:00</span>
+        <button class="stop" id="stop">Stoppen</button>
+      </div>
+      <div class="prog"><i id="prog"></i></div>
+
+      <div class="tband" id="tband">
+        <span class="dot"></span>
+        <div>
+          <div class="tn" id="q-tense"></div>
+          <div class="tnl" id="q-tnl"></div>
+          <div class="how" id="q-how"></div>
+        </div>
+      </div>
+
+      <div class="qmain">
+        <div>
+          <div class="qverb" id="q-verb"></div>
+          <div class="qnl" id="q-nl"></div>
+        </div>
+        <div class="who">
+          <div class="pw" id="q-pw"></div>
+          <div class="pl" id="q-pl"></div>
+        </div>
+      </div>
+      <div class="notes" id="q-notes"></div>
+
+      <div class="line" id="line">
+        <span class="pron" id="q-pron"></span>
+        <input class="ans" id="ans" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="go" aria-label="Jouw antwoord">
+      </div>
+      <div class="hintline" id="hint"></div>
+      <div class="accents" id="accents"></div>
+
+      <div class="fb" id="fb" role="status"></div>
+      <div class="mini" id="mini"></div>
+
+      <div class="acts">
+        <button class="ghost" id="b-hint">Hint</button>
+        <button class="ghost" id="b-tbl">Tabel</button>
+        <button class="primary" id="b-go">Controleer</button>
+      </div>
+      <p class="kbd"><kbd>Enter</kbd> controleert en gaat verder</p>
+    </div>
+  </section>
+
+  <!-- RESULTAAT -->
+  <section class="view" id="v-res">
+    <div class="res">
+      <div class="score" id="r-score"></div>
+      <p class="sum" id="r-sum"></p>
+      <div class="resacts">
+        <button class="primary" id="r-mist">Fouten herhalen</button>
+        <button class="ghost" id="r-again">Opnieuw</button>
+        <button class="ghost" data-go="setup">Andere oefening</button>
+      </div>
+      <h2>Per tijd</h2><p class="sub">Aantal juist per tijd in deze oefening.</p>
+      <div class="per" id="r-per"></div>
+      <h2 id="r-mh">Fouten</h2><p class="sub" id="r-ms">Jouw antwoord en het juiste antwoord.</p>
+      <ul class="mist" id="r-list"></ul>
+    </div>
+  </section>
+
+  <!-- TABELLEN -->
+  <section class="view" id="v-table">
+    <div class="tblhead">
+      <input class="search" id="t-search" list="t-dl" placeholder="Typ een werkwoord" autocomplete="off" spellcheck="false">
+      <datalist id="t-dl"></datalist>
+      <button class="ghost" id="t-say">Uitspreken</button>
+    </div>
+    <div class="tblverb" id="t-verb"></div>
+    <div class="qnl" id="t-nl"></div>
+    <div class="grid" id="t-grid"></div>
+  </section>
+</div>
+
+<div class="bar" id="bar">
+  <div class="wrap">
+    <p id="selinfo"></p>
+    <button class="primary" id="start">Start</button>
+  </div>
+</div>
+
+<script>
+/* ============ Vervoegingsmotor ============ */
+const TENSES=[
+ {id:'pres',name:'Présent',nl:'Tegenwoordige tijd'},
+ {id:'pc',name:'Passé composé',nl:'Voltooid tegenwoordige tijd'},
+ {id:'imp',name:'Imparfait',nl:'Onvoltooid verleden tijd'},
+ {id:'pqp',name:'Plus-que-parfait',nl:'Voltooid verleden tijd'},
+ {id:'fut',name:'Futur simple',nl:'Toekomende tijd'},
+ {id:'cond',name:'Conditionnel présent',nl:'Voorwaardelijke wijs'},
+ {id:'subj',name:'Subjonctif présent',nl:'Aanvoegende wijs'},
+ {id:'impe',name:'Impératif',nl:'Gebiedende wijs'}
+];
+const PRON=['je','tu','il','nous','vous','ils'];
+const PRON_SHOW=['je','tu','il/elle','nous','vous','ils/elles'];
+const REFL=['me','te','se','nous','vous','se'];
+const AV={pres:['ai','as','a','avons','avez','ont'],imp:['avais','avais','avait','avions','aviez','avaient']};
+const ET={pres:['suis','es','est','sommes','êtes','sont'],imp:['étais','étais','était','étions','étiez','étaient']};
+const VOW=/^[aeiouyhàâäéèêëîïôöûùü]/i;
+
+const VERBS=[];
+const ETRE_ER=new Set(['arriver','entrer','rester','tomber','rentrer','monter','retourner']);
+
+function add(v){VERBS.push(v)}
+function er(inf,nl,k,o={}){
+  const refl=/^s(e |')/.test(inf); const base=inf.replace(/^s(e |')/,'');
+  const st=base.slice(0,-2); let m=st;
+  if(k==='e') m=st.replace(/e([^e]*)$/,'è$1');
+  if(k==='é') m=st.replace(/é([^é]*)$/,'è$1');
+  if(k==='dbl') m=st+st.slice(-1);
+  if(k==='y') m=st.slice(0,-1)+'i';
+  let n=st; if(/g$/.test(st)) n=st+'e'; if(/c$/.test(st)) n=st.slice(0,-1)+'ç';
+  add(Object.assign({inf,base,nl,group:refl?'refl':'er',refl,aux:refl||ETRE_ER.has(base)?'être':'avoir',
+    pres:[m+'e',m+'es',m+'e',n+'ons',st+'ez',m+'ent'],pp:st+'é',fut:(k&&k!=='é')?m+'er':base},o));
+}
+function ir(inf,nl){const s=inf.slice(0,-2);add({inf,base:inf,nl,group:'ir',aux:'avoir',pres:[s+'is',s+'is',s+'it',s+'issons',s+'issez',s+'issent'],pp:s+'i',fut:inf})}
+function re(inf,nl,aux='avoir'){const s=inf.slice(0,-2);add({inf,base:inf,nl,group:'re',aux,pres:[s+'s',s+'s',s,s+'ons',s+'ez',s+'ent'],pp:s+'u',fut:inf.slice(0,-1)})}
+function irr(inf,nl,pres,pp,fut,o={}){
+  const refl=/^s(e |')/.test(inf); const base=inf.replace(/^s(e |')/,'');
+  add(Object.assign({inf,base,nl,group:refl?'refl':'irr',refl,aux:refl?'être':'avoir',pres:pres.split(' '),pp,fut},o));
+}
+// prefix-afleiding: pf(prefix, stamvorm-data)
+function irrP(prefix,inf,nl,pres,pp,fut,o={}){
+  irr(prefix+inf,nl,pres.split(' ').map(x=>prefix+x).join(' '),prefix+pp,prefix+fut,o);
+}
+
+/* --- onregelmatig --- */
+irr('être','zijn','suis es est sommes êtes sont','été','ser',{impfStem:'ét',subj:'sois sois soit soyons soyez soient',imp:'sois soyons soyez'});
+irr('avoir','hebben','ai as a avons avez ont','eu','aur',{subj:'aie aies ait ayons ayez aient',imp:'aie ayons ayez'});
+irr('aller','gaan','vais vas va allons allez vont','allé','ir',{aux:'être',subjStem:'aill',imp:'va allons allez'});
+irr('faire','doen, maken','fais fais fait faisons faites font','fait','fer',{subj:'fasse fasses fasse fassions fassiez fassent'});
+irrP('re','faire','overdoen','fais fais fait faisons faites font','fait','fer',{subj:'refasse refasses refasse refassions refassiez refassent'});
+irr('dire','zeggen','dis dis dit disons dites disent','dit','dir');
+irr('pouvoir','kunnen','peux peux peut pouvons pouvez peuvent','pu','pourr',{subj:'puisse puisses puisse puissions puissiez puissent',noImp:1});
+irr('vouloir','willen','veux veux veut voulons voulez veulent','voulu','voudr',{subj:'veuille veuilles veuille voulions vouliez veuillent',imp:'veuille veuillons veuillez'});
+irr('savoir','weten','sais sais sait savons savez savent','su','saur',{subj:'sache saches sache sachions sachiez sachent',imp:'sache sachons sachez'});
+irr('devoir','moeten','dois dois doit devons devez doivent','dû','devr',{noImp:1});
+irr('venir','komen','viens viens vient venons venez viennent','venu','viendr',{aux:'être'});
+irrP('re','venir','terugkomen','viens viens vient venons venez viennent','venu','viendr',{aux:'être'});
+irrP('de','venir','worden','viens viens vient venons venez viennent','venu','viendr',{aux:'être'});
+irrP('pré','venir','waarschuwen','viens viens vient venons venez viennent','venu','viendr');
+irr('se souvenir','zich herinneren','souviens souviens souvient souvenons souvenez souviennent','souvenu','souviendr');
+irr('tenir','houden','tiens tiens tient tenons tenez tiennent','tenu','tiendr');
+irrP('ob','tenir','verkrijgen','tiens tiens tient tenons tenez tiennent','tenu','tiendr');
+irrP('re','tenir','tegenhouden, onthouden','tiens tiens tient tenons tenez tiennent','tenu','tiendr');
+irrP('appar','tenir','toebehoren','tiens tiens tient tenons tenez tiennent','tenu','tiendr');
+irrP('main','tenir','handhaven','tiens tiens tient tenons tenez tiennent','tenu','tiendr');
+irr('prendre','nemen','prends prends prend prenons prenez prennent','pris','prendr');
+irrP('ap','prendre','leren','prends prends prend prenons prenez prennent','pris','prendr');
+irrP('com','prendre','begrijpen','prends prends prend prenons prenez prennent','pris','prendr');
+irrP('sur','prendre','verrassen','prends prends prend prenons prenez prennent','pris','prendr');
+irrP('re','prendre','hernemen','prends prends prend prenons prenez prennent','pris','prendr');
+irr('mettre','leggen, zetten','mets mets met mettons mettez mettent','mis','mettr');
+irrP('pro','mettre','beloven','mets mets met mettons mettez mettent','mis','mettr');
+irrP('per','mettre','toestaan','mets mets met mettons mettez mettent','mis','mettr');
+irrP('ad','mettre','toegeven','mets mets met mettons mettez mettent','mis','mettr');
+irrP('re','mettre','terugzetten, uitstellen','mets mets met mettons mettez mettent','mis','mettr');
+irr('voir','zien','vois vois voit voyons voyez voient','vu','verr');
+irrP('re','voir','terugzien','vois vois voit voyons voyez voient','vu','verr');
+irr('croire','geloven','crois crois croit croyons croyez croient','cru','croir');
+irr('recevoir','ontvangen','reçois reçois reçoit recevons recevez reçoivent','reçu','recevr');
+irr('apercevoir','bemerken','aperçois aperçois aperçoit apercevons apercevez aperçoivent','aperçu','apercevr');
+irr('décevoir','teleurstellen','déçois déçois déçoit décevons décevez déçoivent','déçu','décevr');
+irr('boire','drinken','bois bois boit buvons buvez boivent','bu','boir');
+irr('lire','lezen','lis lis lit lisons lisez lisent','lu','lir');
+irrP('re','lire','herlezen','lis lis lit lisons lisez lisent','lu','lir');
+irr('écrire','schrijven','écris écris écrit écrivons écrivez écrivent','écrit','écrir');
+irrP('d','écrire','beschrijven','écris écris écrit écrivons écrivez écrivent','écrit','écrir');
+irr('inscrire','inschrijven','inscris inscris inscrit inscrivons inscrivez inscrivent','inscrit','inscrir');
+irr('vivre','leven','vis vis vit vivons vivez vivent','vécu','vivr');
+irr('suivre','volgen','suis suis suit suivons suivez suivent','suivi','suivr');
+irr('connaître','kennen','connais connais connaît connaissons connaissez connaissent','connu','connaîtr');
+irrP('re','connaître','herkennen','connais connais connaît connaissons connaissez connaissent','connu','connaîtr');
+irr('paraître','lijken','parais parais paraît paraissons paraissez paraissent','paru','paraîtr');
+irrP('dis','paraître','verdwijnen','parais parais paraît paraissons paraissez paraissent','paru','paraîtr');
+irr('naître','geboren worden','nais nais naît naissons naissez naissent','né','naîtr',{aux:'être'});
+irr('mourir','sterven','meurs meurs meurt mourons mourez meurent','mort','mourr',{aux:'être'});
+irr('partir','vertrekken','pars pars part partons partez partent','parti','partir',{aux:'être'});
+irr('sortir','buitengaan','sors sors sort sortons sortez sortent','sorti','sortir',{aux:'être'});
+irr('dormir','slapen','dors dors dort dormons dormez dorment','dormi','dormir');
+irr('sentir','voelen, ruiken','sens sens sent sentons sentez sentent','senti','sentir');
+irr('mentir','liegen','mens mens ment mentons mentez mentent','menti','mentir');
+irr('servir','dienen','sers sers sert servons servez servent','servi','servir');
+irr('courir','lopen','cours cours court courons courez courent','couru','courr');
+irr('ouvrir','openen','ouvre ouvres ouvre ouvrons ouvrez ouvrent','ouvert','ouvrir');
+irr('offrir','aanbieden','offre offres offre offrons offrez offrent','offert','offrir');
+irr('découvrir','ontdekken','découvre découvres découvre découvrons découvrez découvrent','découvert','découvrir');
+irr('souffrir','lijden','souffre souffres souffre souffrons souffrez souffrent','souffert','souffrir');
+irr('cueillir','plukken','cueille cueilles cueille cueillons cueillez cueillent','cueilli','cueiller');
+for(const [p,nl] of [['cond','besturen, rijden'],['constr','bouwen'],['prod','produceren'],['trad','vertalen'],['détr','vernietigen'],['réd','verminderen'],['introd','invoeren']])
+  irr(p+'uire',nl,`${p}uis ${p}uis ${p}uit ${p}uisons ${p}uisez ${p}uisent`,p+'uit',p+'uir');
+irr('plaire','bevallen','plais plais plaît plaisons plaisez plaisent','plu','plair');
+irr('rire','lachen','ris ris rit rions riez rient','ri','rir');
+irrP('sou','rire','glimlachen','ris ris rit rions riez rient','ri','rir');
+irr('craindre','vrezen','crains crains craint craignons craignez craignent','craint','craindr');
+irr('plaindre','beklagen','plains plains plaint plaignons plaignez plaignent','plaint','plaindr');
+irr('peindre','schilderen','peins peins peint peignons peignez peignent','peint','peindr');
+irr('éteindre','uitdoen','éteins éteins éteint éteignons éteignez éteignent','éteint','éteindr');
+irr('atteindre','bereiken','atteins atteins atteint atteignons atteignez atteignent','atteint','atteindr');
+irr('joindre','verbinden','joins joins joint joignons joignez joignent','joint','joindr');
+irrP('re','joindre','zich voegen bij','joins joins joint joignons joignez joignent','joint','joindr');
+irr('battre','slaan','bats bats bat battons battez battent','battu','battr');
+irr('fuir','vluchten','fuis fuis fuit fuyons fuyez fuient','fui','fuir');
+irr('valoir','waard zijn','vaux vaux vaut valons valez valent','valu','vaudr',{subj:'vaille vailles vaille valions valiez vaillent',noImp:1});
+irr('falloir','moeten (il faut)','- - faut - - -','fallu','faudr',{impfStem:'fall',subj:'- - faille - - -',impersonal:1,noImp:1});
+irr('pleuvoir','regenen','- - pleut - - -','plu','pleuvr',{impfStem:'pleuv',subj:'- - pleuve - - -',impersonal:1,noImp:1});
+irr('s\'asseoir','gaan zitten','assieds assieds assied asseyons asseyez asseyent','assis','assiér');
+er('envoyer','sturen','y',{fut:'enverr'});
+er('renvoyer','terugsturen','y',{fut:'renverr'});
+
+/* --- -er --- */
+for(const [i,n,k] of [['parler','spreken'],['aimer','houden van'],['manger','eten'],['commencer','beginnen'],['jouer','spelen'],['regarder','kijken'],['travailler','werken'],['habiter','wonen'],['chercher','zoeken'],['trouver','vinden'],['donner','geven'],['écouter','luisteren'],['chanter','zingen'],['danser','dansen'],['penser','denken'],['demander','vragen'],['montrer','tonen'],['oublier','vergeten'],['étudier','studeren'],['fermer','sluiten'],['marcher','wandelen'],['nager','zwemmen'],['voyager','reizen'],['changer','veranderen'],['placer','plaatsen'],['lancer','gooien'],['aider','helpen'],['utiliser','gebruiken'],['acheter','kopen','e'],['lever','optillen','e'],['amener','meebrengen','e'],['appeler','roepen, bellen','dbl'],['jeter','gooien','dbl'],['préférer','verkiezen','é'],['espérer','hopen','é'],['répéter','herhalen','é'],['payer','betalen','y'],['essayer','proberen','y'],['nettoyer','schoonmaken','y'],['employer','gebruiken','y'],
+  ['arriver','aankomen'],['entrer','binnengaan'],['rester','blijven'],['tomber','vallen'],['rentrer','naar huis gaan'],['monter','naar boven gaan'],['retourner','terugkeren']])
+  er(i,n,k);
+
+/* --- -ir --- */
+for(const [i,n] of [['finir','eindigen'],['choisir','kiezen'],['réussir','slagen'],['grandir','groeien'],['remplir','vullen'],['réfléchir','nadenken'],['obéir','gehoorzamen'],['punir','straffen'],['maigrir','vermageren'],['grossir','verdikken'],['rougir','blozen'],['bâtir','bouwen'],['agir','handelen'],['saisir','grijpen']]) ir(i,n);
+
+/* --- -re --- */
+for(const [i,n,a] of [['vendre','verkopen'],['attendre','wachten'],['entendre','horen'],['répondre','antwoorden'],['perdre','verliezen'],['rendre','teruggeven'],['descendre','naar beneden gaan','être'],['défendre','verdedigen'],['mordre','bijten'],['tondre','maaien']]) re(i,n,a);
+
+/* --- wederkerend --- */
+for(const [i,n,k] of [['se laver','zich wassen'],['se lever','opstaan','e'],['se coucher','gaan slapen'],['se réveiller','wakker worden'],['s\'habiller','zich aankleden'],['s\'appeler','heten','dbl'],['se promener','wandelen','e'],['s\'amuser','zich amuseren'],['se dépêcher','zich haasten'],['se reposer','rusten'],['se brosser','zich borstelen'],['s\'arrêter','stoppen'],['se tromper','zich vergissen'],['s\'intéresser','zich interesseren']])
+  er(i,n,k);
+
+VERBS.sort((a,b)=>a.base.localeCompare(b.base,'fr'));
+VERBS.forEach((v,i)=>{v.id=i;for(const k of ['subj','imp'])if(typeof v[k]==='string')v[k]=v[k].split(' ')});
+
+function join(st,end){
+  if(/[ie]/.test(end[0])){ if(/ge$/.test(st)) st=st.slice(0,-1); if(/ç$/.test(st)) st=st.slice(0,-1)+'c'; }
+  return st+end;
+}
+const impfStem=v=>v.impfStem||v.pres[3].slice(0,-3);
+function simple(v,t){
+  const E6=e=>e.map((x,i)=>v.impersonal&&i!==2?null:x);
+  switch(t){
+    case 'pres':return v.pres.map(x=>x==='-'?null:x);
+    case 'imp':{const s=impfStem(v);return E6(['ais','ais','ait','ions','iez','aient'].map(e=>join(s,e)))}
+    case 'fut':return E6(['ai','as','a','ons','ez','ont'].map(e=>v.fut+e));
+    case 'cond':return E6(['ais','ais','ait','ions','iez','aient'].map(e=>v.fut+e));
+    case 'subj':{
+      if(v.subj)return v.subj.map(x=>x==='-'?null:x);
+      const s=v.subjStem||v.pres[5].slice(0,-3),is=impfStem(v);
+      return [s+'e',s+'es',s+'e',join(is,'ions'),join(is,'iez'),s+'ent'];
+    }
+    case 'impe':{
+      if(v.noImp)return [null,null,null,null,null,null];
+      if(v.imp)return [null,v.imp[0],null,v.imp[1],v.imp[2],null];
+      let tu=v.pres[1]; if(/es$/.test(tu))tu=tu.slice(0,-1);
+      return [null,tu,null,v.pres[3],v.pres[4],null];
+    }
+  }
+}
+const reflJoin=(p,rest)=>/^(me|te|se)$/.test(p)&&VOW.test(rest)?p[0]+"'"+rest:p+' '+rest;
+
+/* returns {d: display, acc:[accepted]} or null */
+function conj(v,t,p){
+  if(v.impersonal&&p!==2)return null;
+  if(t==='pc'||t==='pqp'){
+    const etre=v.aux==='être'||v.refl;
+    const aux=(etre?ET:AV)[t==='pc'?'pres':'imp'][p];
+    let d,acc;
+    if(etre){
+      const pl=p>=3, pp=v.pp, pls=/s$/.test(pp)?pp:pp+'s';
+      const sing=[pp,pp+'e'], plur=[pls,pp+'es'];
+      const forms=p===4?[...sing,...plur]:pl?plur:sing;
+      d=aux+' '+(pl?(/s$/.test(pp)?pp+'(es)':pp+'(e)s'):pp+'(e)');
+      acc=forms.map(f=>aux+' '+f);
+    }else{d=aux+' '+v.pp;acc=[d]}
+    if(v.refl){d=reflJoin(REFL[p],d);acc=acc.map(a=>reflJoin(REFL[p],a))}
+    return {d,acc};
+  }
+  const f=simple(v,t)[p]; if(!f)return null;
+  let d=f;
+  if(v.refl){ d=t==='impe'?f+'-'+(p===1?'toi':REFL[p]):reflJoin(REFL[p],f); }
+  return {d,acc:[d]};
+}
+function persons(v,t){const r=[];for(let p=0;p<6;p++)if(conj(v,t,p))r.push(p);return r}
+function pronFor(t,p,d,imp){
+  if(t==='impe')return '';
+  let s=imp?'il':PRON_SHOW[p];
+  if(p===0&&VOW.test(d))s="j'";
+  if(t==='subj')s=(p===2||p===5)?"qu'"+s:'que '+s;
+  return s;
+}
+function pronSpeak(t,p,d){
+  if(t==='impe')return '';
+  let s=PRON[p]; if(p===0&&VOW.test(d))s="j'";
+  if(t==='subj')s=(p===2||p===5)?"qu'"+s:'que '+s;
+  return s;
+}
+
+/* ============ Hulpfuncties ============ */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const strip=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+function norm(s){
+  return s.normalize('NFC').toLowerCase().replace(/[’‘`´]/g,"'").replace(/\s+/g,' ').replace(/'\s+/g,"'").replace(/\s*-\s*/g,'-').trim();
+}
+const store={get(k,d){try{const v=localStorage.getItem('verbes:'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('verbes:'+k,JSON.stringify(v))}catch(e){}}};
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a}
+
+let frVoice=null;
+function pickVoice(){const vs=speechSynthesis.getVoices();frVoice=vs.find(v=>/^fr(-|_)FR/i.test(v.lang))||vs.find(v=>/^fr/i.test(v.lang))||null}
+if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function speak(text){
+  if(!('speechSynthesis' in window))return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text.replace(/\(.*?\)/g,''));
+  u.lang='fr-FR';if(frVoice)u.voice=frVoice;u.rate=.9;speechSynthesis.speak(u);
+}
+const SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+
+
+/* ============ Extra info per tijd ============ */
+const HOW={
+  pres:'Stam + -e, -es, -e, -ons, -ez, -ent (bij -er). Onregelmatige werkwoorden ken je van buiten.',
+  pc:'Hulpwerkwoord avoir of être in de présent + voltooid deelwoord. Twee woorden, bv. ai parlé.',
+  imp:'Stam van nous (présent) + -ais, -ais, -ait, -ions, -iez, -aient.',
+  pqp:'Hulpwerkwoord avoir of être in de imparfait + voltooid deelwoord. Twee woorden, bv. avais parlé.',
+  fut:'Infinitief (of onregelmatige stam) + -ai, -as, -a, -ons, -ez, -ont.',
+  cond:'Stam van de futur + -ais, -ais, -ait, -ions, -iez, -aient.',
+  subj:'"que" staat er al. Stam van ils (présent) + -e, -es, -e, -ions, -iez, -ent.',
+  impe:'Zonder onderwerp. Bij -er valt de -s van tu weg: parle, va.'
+};
+const PERS=['1e persoon enkelvoud','2e persoon enkelvoud','3e persoon enkelvoud','1e persoon meervoud','2e persoon meervoud','3e persoon meervoud'];
+const T=id=>TENSES.find(t=>t.id===id);
+const fullShown=(t,p,d,imp)=>(pronFor(t,p,d,imp)+' '+d).trim().replace(/' /,"'");
+const fullSpoken=(t,p,d)=>(pronSpeak(t,p,d)+' '+d).trim().replace(/' /,"'");
+
+/* ============ State ============ */
+const GROUPS=[['irr','Onregelmatig'],['er','-er'],['ir','-ir'],['re','-re'],['refl','Wederkerend']];
+const GROUPNAME={irr:'onregelmatig',er:'-er',ir:'-ir',re:'-re',refl:'wederkerend'};
+const TOP10=['être','avoir','aller','faire','pouvoir','vouloir','savoir','devoir','venir','prendre'];
+const S={
+  tenses:new Set(store.get('tenses',['pres'])),
+  verbs:new Set(store.get('verbs',TOP10)),
+  count:store.get('count',20),
+  noAcc:store.get('noAcc',false),
+  say:store.get('say',false),
+  how:store.get('how',true),
+  filter:'all'
+};
+function save(){for(const k of ['count','noAcc','say','how'])store.set(k,S[k]);store.set('tenses',[...S.tenses]);store.set('verbs',[...S.verbs])}
+const byInf=Object.fromEntries(VERBS.map(v=>[v.inf,v]));
+for(const i of [...S.verbs])if(!byInf[i])S.verbs.delete(i);
+
+/* ============ Navigatie ============ */
+function go(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+name));
+  document.querySelectorAll('nav button').forEach(b=>b.setAttribute('aria-current',String(name==='table'?b.dataset.go==='table':b.dataset.go==='setup')));
+  $('#bar').style.display=name==='setup'?'':'none';
+  if(name!=='ex')stopTimer();
+  if(name==='table')renderTable();
+  if(name==='setup')renderSetup();
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>{
+  if($('#v-ex').classList.contains('on')&&R&&R.done>0){finish();if(b.dataset.go==='setup')return}
+  go(b.dataset.go)
+});
+
+/* ============ Setup ============ */
+function renderSetup(){
+  $('#tenses').innerHTML=TENSES.map(t=>`<button class="tense t-${t.id}" data-t="${t.id}" aria-pressed="${S.tenses.has(t.id)}"><span class="box"></span><span><b>${t.name}</b><small>${t.nl}</small></span></button>`).join('');
+  $('#tenses').querySelectorAll('.tense').forEach(b=>b.onclick=()=>{const t=b.dataset.t;S.tenses.has(t)?S.tenses.delete(t):S.tenses.add(t);b.setAttribute('aria-pressed',S.tenses.has(t));save();info()});
+  $('#count').innerHTML=[10,20,50,0].map(c=>`<button data-c="${c}" aria-pressed="${S.count===c}">${c||'∞'}</button>`).join('');
+  $('#count').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.count=+b.dataset.c;save();renderSetup()});
+  for(const [id,k] of [['o-acc','noAcc'],['o-say','say'],['o-how','how']])$('#'+id).setAttribute('aria-pressed',S[k]);
+  renderList();info();
+}
+for(const [id,k] of [['o-acc','noAcc'],['o-say','say'],['o-how','how']])
+  $('#'+id).onclick=()=>{S[k]=!S[k];save();$('#'+id).setAttribute('aria-pressed',S[k])};
+$('#search').oninput=renderList;
+$('#top10').onclick=()=>{S.verbs=new Set(TOP10);save();renderList();info()};
+$('#none').onclick=()=>{S.verbs.clear();save();renderList();info()};
+
+function visibleVerbs(){
+  const q=strip($('#search').value.toLowerCase().trim());
+  return VERBS.filter(v=>{
+    if(S.filter==='sel'&&!S.verbs.has(v.inf))return false;
+    if(S.filter!=='all'&&S.filter!=='sel'&&v.group!==S.filter)return false;
+    return !q||strip(v.inf).includes(q)||strip(v.nl.toLowerCase()).includes(q);
+  });
+}
+function renderFilters(){
+  const opts=[['all','Alle',VERBS.length],...GROUPS.map(([g,l])=>[g,l,VERBS.filter(v=>v.group===g).length]),['sel','Aangevinkt',S.verbs.size]];
+  $('#filters').innerHTML=opts.map(([k,l,n])=>`<button data-f="${k}" aria-pressed="${S.filter===k}">${l}<span>${n}</span></button>`).join('');
+  $('#filters').querySelectorAll('button').forEach(b=>b.onclick=()=>{S.filter=b.dataset.f;renderList()});
+}
+function renderList(){
+  renderFilters();
+  const vs=visibleVerbs();
+  const on=vs.filter(v=>S.verbs.has(v.inf)).length, all=vs.length&&on===vs.length;
+  if(!vs.length){$('#list').innerHTML=`<p class="empty">${S.filter==='sel'?'Nog niets aangevinkt. Kies werkwoorden in een andere lijst of plak een lijst hierboven.':'Geen werkwoord gevonden. Zoek op het infinitief of de Nederlandse vertaling.'}</p>`;return}
+  $('#list').innerHTML=`<div class="lhead"><button id="l-all" aria-checked="${all}"><span class="box"></span>${all?'Alles in deze lijst uitvinken':'Alles in deze lijst aanvinken'}</button><span style="margin-left:auto">${on} van ${vs.length} aangevinkt</span></div>`+
+    vs.map(v=>`<button class="row" role="checkbox" data-v="${esc(v.inf)}" aria-checked="${S.verbs.has(v.inf)}"><span class="box"></span><span class="inf">${esc(v.inf)}</span><span class="nl">${esc(v.nl)}</span><span class="tags">${v.aux==='être'&&!v.refl?'<span class="tag et">être</span>':''}<span class="tag">${GROUPNAME[v.group]}</span></span></button>`).join('');
+  $('#l-all').onclick=()=>{vs.forEach(v=>all?S.verbs.delete(v.inf):S.verbs.add(v.inf));save();renderList();info()};
+  $('#list').querySelectorAll('.row').forEach(b=>b.onclick=()=>{
+    const i=b.dataset.v;S.verbs.has(i)?S.verbs.delete(i):S.verbs.add(i);save();
+    if(S.filter==='sel'){renderList()}else{b.setAttribute('aria-checked',S.verbs.has(i));
+      const n=vs.filter(v=>S.verbs.has(v.inf)).length;$('#list .lhead span:last-child').textContent=`${n} van ${vs.length} aangevinkt`;
+      const a=n===vs.length;$('#l-all').setAttribute('aria-checked',a);$('#l-all').lastChild.textContent=a?'Alles in deze lijst uitvinken':'Alles in deze lijst aanvinken';
+      $('#filters [data-f=sel] span').textContent=S.verbs.size}
+    info()});
+}
+
+/* --- lijst plakken --- */
+const key=s=>strip(s.toLowerCase()).replace(/\(.*?\)/g,'').replace(/[’‘`´]/g,"'").replace(/'\s+/g,"'").replace(/[^a-z' ]/g,' ').replace(/\s+/g,' ').trim();
+const KEYMAP={},BASEMAP={};
+for(const v of VERBS){KEYMAP[key(v.inf)]=v;(BASEMAP[key(v.base)]=BASEMAP[key(v.base)]||[]).push(v)}
+function findVerb(raw){
+  let k=key(raw).replace(/^(to |infinitif )/,'');
+  if(!k)return null;
+  if(KEYMAP[k])return KEYMAP[k];
+  if(KEYMAP['se '+k])return KEYMAP['se '+k];
+  if(KEYMAP["s'"+k])return KEYMAP["s'"+k];
+  const b=k.replace(/^(se |s'|s )/,'');
+  if(b!==k){if(KEYMAP['se '+b])return KEYMAP['se '+b];if(KEYMAP["s'"+b])return KEYMAP["s'"+b]}
+  if(KEYMAP[b])return KEYMAP[b];
+  if(BASEMAP[b])return BASEMAP[b][0];
+  return null;
+}
+$('#p-go').onclick=()=>{
+  const txt=$('#paste').value;
+  const parts=txt.split(/[,;\n\r\t\/|•·]+/).map(s=>s.replace(/^\s*[-*\d.)]+\s*/,'').trim()).filter(Boolean);
+  const found=[],miss=[];
+  for(const p of parts){
+    const v=findVerb(p);
+    if(v){found.push(v);continue}
+    // misschien gescheiden door spaties
+    const words=key(p).split(' ');let ok=false;
+    if(words.length>1){const sub=[];let i=0;
+      while(i<words.length){
+        if((words[i]==='se'||words[i]==='s')&&words[i+1]&&findVerb('se '+words[i+1])){sub.push(findVerb('se '+words[i+1]));i+=2;continue}
+        const w=findVerb(words[i]);if(!w)break;sub.push(w);i++}
+      if(i===words.length){found.push(...sub);ok=true}}
+    if(!ok)miss.push(p);
+  }
+  const m=$('#pmsg');
+  if(!parts.length){m.className='pmsg show warn';m.textContent='Plak eerst een lijst, bijvoorbeeld: être, avoir, aller.';return}
+  if(found.length){if($('#p-replace').checked)S.verbs.clear();found.forEach(v=>S.verbs.add(v.inf));save()}
+  const uniq=[...new Set(found.map(v=>v.inf))];
+  m.className='pmsg show '+(miss.length?'warn':'ok');
+  m.innerHTML=(uniq.length?`${uniq.length} ${uniq.length===1?'werkwoord':'werkwoorden'} aangevinkt.`:'Geen werkwoorden herkend.')+
+    (miss.length?` Niet gevonden: <b>${miss.map(esc).join(', ')}</b>. Controleer de spelling, of het werkwoord zit niet in de lijst.`:'');
+  if(uniq.length){S.filter='sel';$('#search').value=''}
+  renderList();info();
+};
+$('#paste').addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.metaKey||e.ctrlKey)){e.preventDefault();$('#p-go').click()}});
+
+function buildPool(){
+  const pool=[];
+  for(const inf of S.verbs){const v=byInf[inf];if(!v)continue;
+    for(const t of TENSES)if(S.tenses.has(t.id))for(const p of persons(v,t.id))pool.push({v,t:t.id,p})}
+  return pool;
+}
+function info(){
+  const n=buildPool().length;
+  $('#selinfo').innerHTML=S.verbs.size&&S.tenses.size?(n?`<b>${S.verbs.size}</b> ${S.verbs.size===1?'werkwoord':'werkwoorden'}, <b>${S.tenses.size}</b> ${S.tenses.size===1?'tijd':'tijden'}, ${n} mogelijke vragen`:'Deze combinatie levert geen vragen op. Kies een andere tijd.'):(!S.tenses.size?'Kies minstens één tijd.':'Vink minstens één werkwoord aan.');
+  $('#start').disabled=!n;
+}
+$('#start').onclick=()=>startRun(buildPool(),S.count);
+
+/* ============ Oefening ============ */
+let R=null,timerId=null;
+const ACC=['é','è','ê','ë','à','â','ç','î','ï','ô','û','ù','œ'];
+$('#accents').innerHTML=ACC.map(a=>`<button tabindex="-1" data-a="${a}" aria-label="Typ ${a}">${a}</button>`).join('');
+$('#accents').querySelectorAll('button').forEach(b=>{
+  b.onmousedown=e=>e.preventDefault();
+  b.onclick=()=>{const i=$('#ans');if(i.disabled)return;const s=i.selectionStart,e=i.selectionEnd;i.value=i.value.slice(0,s)+b.dataset.a+i.value.slice(e);i.setSelectionRange(s+1,s+1);i.focus()}
+});
+
+function startRun(pool,count){
+  let q=shuffle(pool.slice());
+  if(count){while(q.length<count)q=q.concat(shuffle(pool.slice()));q=q.slice(0,count)}
+  R={pool,count,queue:q,i:0,ok:0,bad:0,done:0,mist:[],log:[],start:Date.now(),state:'ask',cur:null};
+  go('ex');startTimer();ask();
+}
+function startTimer(){stopTimer();timerId=setInterval(()=>{$('#c-time').textContent=fmt(Date.now()-R.start)},500)}
+function stopTimer(){clearInterval(timerId)}
+const fmt=ms=>{const s=Math.floor(ms/1000);return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+
+function ask(){
+  if(!R.count&&R.i>=R.queue.length)R.queue=R.queue.concat(shuffle(R.pool.slice()));
+  if(R.i>=R.queue.length)return finish();
+  const q=R.queue[R.i];const c=conj(q.v,q.t,q.p);
+  R.cur={...q,c,hint:0};R.state='ask';
+  const tt=T(q.t);
+  $('#exbox').className='ex t-'+q.t;
+  $('#q-tense').textContent=tt.name;
+  $('#q-tnl').textContent=tt.nl;
+  $('#q-how').textContent=HOW[q.t];$('#q-how').style.display=S.how?'':'none';
+  $('#q-verb').textContent=q.v.inf;
+  $('#q-nl').textContent=q.v.nl;
+  const imper=q.t==='impe';
+  $('#q-pw').textContent=imper?['','tu','','nous','vous',''][q.p]:'';$('#q-pw').style.display=imper?'':'none';
+  $('#q-pl').textContent=q.v.impersonal?'onpersoonlijk':PERS[q.p];
+  const notes=[];
+  if(q.v.refl)notes.push(`<span class="note"><b>Wederkerend</b>: typ ook ${imper?'-toi, -nous, -vous':'me, te, se, nous, vous'}</span>`);
+  if(imper)notes.push(`<span class="note"><b>Geen onderwerp</b> typen</span>`);
+  if(q.t==='pc'||q.t==='pqp')notes.push(`<span class="note"><b>Hulpwerkwoord + deelwoord</b>, (e)/(s) bij être mag maar hoeft niet</span>`);
+  if(q.t==='subj')notes.push(`<span class="note"><b>que</b> staat er al</span>`);
+  if(S.noAcc)notes.push(`<span class="note">Accenten worden genegeerd</span>`);
+  $('#q-notes').innerHTML=notes.join('');
+  $('#q-pron').textContent=pronFor(q.t,q.p,c.d,q.v.impersonal);
+  $('#q-pron').style.display=imper?'none':'';
+  const a=$('#ans');a.value='';a.disabled=false;
+  a.placeholder=(q.t==='pc'||q.t==='pqp')?'hulpwerkwoord + deelwoord':imper?'gebiedende vorm':'';
+  $('#line').className='line';$('#hint').innerHTML='';
+  $('#fb').className='fb';$('#mini').className='mini';
+  $('#b-go').textContent='Controleer';$('#b-hint').disabled=false;
+  updTop();a.focus();
+}
+function updTop(){
+  $('#c-ok').textContent='✓ '+R.ok;$('#c-bad').textContent='✗ '+R.bad;
+  $('#c-pos').textContent=R.count?`${Math.min(R.i+1,R.count)} / ${R.count}`:`${R.i+1}`;
+  $('#prog').style.width=R.count?(R.done/R.count*100)+'%':'0%';
+  $('#c-time').textContent=fmt(Date.now()-R.start);
+}
+function cands(given){const g=norm(given);return [g,g.replace(/^(que |qu')?(je |j'|tu |il |elle |on |nous |vous |ils |elles )/,'')]}
+function matches(given,acc,loose){
+  const f=loose?strip:x=>x;
+  return acc.some(a=>cands(given).some(c=>f(c)===f(norm(a))));
+}
+function check(){
+  const q=R.cur,given=$('#ans').value;
+  if(!given.trim()){$('#ans').focus();return}
+  const right=matches(given,q.c.acc,S.noAcc);
+  const accOnly=!right&&matches(given,q.c.acc,true);
+  const ok=right&&!q.hint;
+  R.done++;
+  R.log.push({t:q.t,ok});
+  if(ok)R.ok++;else{R.bad++;R.mist.push({v:q.v,t:q.t,p:q.p,given,d:q.c.d,hint:right&&q.hint})}
+  $('#ans').disabled=true;
+  $('#line').className='line '+(ok?'ok':'bad');
+  const shown=fullShown(q.t,q.p,q.c.d,q.v.impersonal), spoken=fullSpoken(q.t,q.p,q.c.d);
+  const title=ok?'Juist':right?'Juist, maar je gebruikte een hint':accOnly?'Bijna: let op de accenten':'Niet juist';
+  const fb=$('#fb');
+  fb.innerHTML=`<div class="row2"><div>${title}<div class="big">${esc(shown)}</div>${ok?'':`<div class="yours">Jij typte: <s>${esc(given.trim())}</s></div>`}</div><button class="say" aria-label="Uitspreken">${SPK}</button></div>`;
+  fb.className='fb show '+(ok?'ok':accOnly?'warn':'bad');
+  fb.querySelector('.say').onclick=()=>speak(spoken);
+  if(S.say)speak(spoken);
+  $('#b-go').textContent=R.count&&R.i+1>=R.count?'Bekijk resultaat':'Volgende';
+  $('#b-hint').disabled=true;
+  R.state='shown';updTop();$('#b-go').focus();
+}
+function next(){R.i++;ask()}
+$('#b-go').onclick=()=>R.state==='ask'?check():next();
+$('#ans').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();e.stopPropagation();if(R.state==='ask')check()}});
+document.addEventListener('keydown',e=>{
+  if(!$('#v-ex').classList.contains('on')||!R)return;
+  if(e.key==='Enter'&&R.state==='shown'&&e.target.id!=='b-go'){e.preventDefault();next()}
+});
+$('#b-hint').onclick=()=>{
+  const q=R.cur;if(R.state!=='ask')return;
+  const target=q.c.d.replace(/\(.*?\)/g,'');
+  q.hint=Math.min(q.hint+1,target.length);
+  $('#hint').innerHTML=`<code>${esc(target.slice(0,q.hint))}${'·'.repeat(Math.max(0,target.length-q.hint))}</code> &nbsp;Met hint telt deze vraag als fout.`;
+  $('#ans').focus();
+};
+$('#b-tbl').onclick=()=>{
+  const m=$('#mini');if(m.classList.contains('show')){m.className='mini';return}
+  const q=R.cur;
+  if(R.state==='ask'){q.hint=99;$('#hint').textContent='Tabel bekeken. Deze vraag telt als fout.'}
+  const rows=[0,1,2,3,4,5].map(p=>{const c=conj(q.v,q.t,p);if(!c)return '';
+    return `<tr class="${p===q.p?'cur':''}"><td>${esc(pronFor(q.t,p,c.d,q.v.impersonal)||['','tu','','nous','vous',''][p])}</td><td>${esc(c.d)}</td></tr>`}).join('');
+  m.innerHTML=`<table>${rows}</table>`;m.className='mini show';
+};
+$('#stop').onclick=()=>{R.done?finish():go('setup')};
+
+/* ============ Resultaat ============ */
+function finish(){
+  stopTimer();
+  const ms=Date.now()-R.start,pct=R.done?Math.round(R.ok/R.done*100):0;
+  $('#r-score').innerHTML=pct+'<small>%</small>';
+  $('#r-sum').textContent=`${R.ok} van ${R.done} juist in ${fmt(ms)}${R.done?', gemiddeld '+(ms/R.done/1000).toFixed(1).replace('.',',')+' s per vraag':''}.`;
+  const per=TENSES.map(t=>{const l=R.log.filter(x=>x.t===t.id);return l.length?{t,n:l.length,ok:l.filter(x=>x.ok).length}:null}).filter(Boolean);
+  $('#r-per').innerHTML=per.map(x=>`<div class="t-${x.t.id}"><span class="pn">${x.t.name}</span><span class="pb"><i style="width:${x.ok/x.n*100}%"></i></span><span class="pv">${x.ok}/${x.n}</span></div>`).join('');
+  const has=R.mist.length>0;
+  $('#r-mist').style.display=has?'':'none';
+  $('#r-ms').style.display=has?'':'none';
+  $('#r-list').innerHTML=has?R.mist.map(m=>{
+    const tt=T(m.t);
+    return `<li class="t-${m.t}"><span class="m1">${esc(m.v.inf)}</span><span class="m2">${tt.name} · ${m.v.impersonal?'il':(m.t==='impe'?['','tu','','nous','vous',''][m.p]:PRON_SHOW[m.p])}${m.hint?' · met hint':''}</span><span class="m3"><s>${esc(m.given)}</s><br><span class="good">${esc(fullShown(m.t,m.p,m.d,m.v.impersonal))}</span></span></li>`}).join(''):'<p class="empty" style="padding-left:0">Geen fouten. Mooi werk.</p>';
+  go('res');
+}
+$('#r-mist').onclick=()=>{const pool=R.mist.map(m=>({v:m.v,t:m.t,p:m.p}));startRun(pool,pool.length)};
+$('#r-again').onclick=()=>startRun(R.pool,R.count);
+
+/* ============ Tabellen ============ */
+let tblVerb=store.get('tbl','être');
+$('#t-dl').innerHTML=VERBS.map(v=>`<option value="${esc(v.inf)}">${esc(v.nl)}</option>`).join('');
+$('#t-search').addEventListener('input',()=>{const v=byInf[$('#t-search').value]||findVerb($('#t-search').value);if(v&&key(v.inf)===key($('#t-search').value)){tblVerb=v.inf;store.set('tbl',tblVerb);renderTable(true)}});
+$('#t-search').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=findVerb($('#t-search').value);if(v){tblVerb=v.inf;store.set('tbl',tblVerb);renderTable(true)}}});
+function renderTable(keep){
+  const v=byInf[tblVerb]||byInf['être'];
+  if(!keep)$('#t-search').value='';
+  $('#t-verb').textContent=v.inf;$('#t-nl').textContent=v.nl+(v.aux==='être'||v.refl?' · vervoegd met être':'');
+  $('#t-grid').innerHTML=TENSES.map(t=>{
+    const lis=[0,1,2,3,4,5].map(p=>{const c=conj(v,t.id,p);if(!c)return '';
+      const pr=pronFor(t.id,p,c.d,v.impersonal);
+      return `<li data-s="${esc(fullSpoken(t.id,p,c.d))}"><span>${esc(pr||['','(tu)','','(nous)','(vous)',''][p])}</span>${esc(c.d)}</li>`}).join('');
+    return lis?`<div class="t-${t.id}"><h4>${t.name}<small>${t.nl}</small></h4><ol>${lis}</ol></div>`:'';
+  }).join('');
+  $('#t-grid').querySelectorAll('li').forEach(li=>li.onclick=()=>speak(li.dataset.s));
+}
+$('#t-say').onclick=()=>speak(byInf[tblVerb]?.inf||'être');
+
+renderSetup();
+</script>
+</body>
+</html>
